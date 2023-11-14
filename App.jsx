@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import ToDoList from './ToDoList';
 import ToDoForm from './ToDoForm';
+import { ScrollView } from 'react-native';
 
 const App = () => {
   
-  
   const [tasks, setTasks] = useState([
-    { id: '1', text: 'Complete React Native tutorial' },
-    { id: '2', text: 'Build a ToDo app' },
+    'Do laundry',
+    'Go to gym',
+    'Walk dog',
   ]);
 
   const addTask = (task) => {
@@ -15,10 +16,10 @@ const App = () => {
   };
 
   return (
-    <>
+    <ScrollView>
       <ToDoList tasks={tasks} />
       <ToDoForm onAddTask={addTask} />
-    </>
+    </ScrollView>
   );
 };
 
