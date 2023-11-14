@@ -1,21 +1,23 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
 
-const ToDoList = ({ tasks }) => {
+function ToDoList ({ tasks }){
   return (
     <ScrollView>
-        <View style={styles.container}>
-            <Text style={styles.header}>ToDo list Page</Text>
-            <FlatList
-                data={tasks}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                    <View style={styles.taskItem}>
-                        <Text>{item.text}</Text>
-                    </View>
-                )}
-            />
+      {tasks.map((task, index) => (
+        <View style={styles.container} key={task.id}>
+          {/* Display each task item styled as incomplete. */}
+          <Text style={styles.header}>ToDo list Page</Text>
+          <FlatList
+            data={tasks}
+            renderItem={({ item }) => (
+              <View style={styles.taskItem}>
+                <Text>{item.text}</Text>
+              </View>
+            )}
+          />
         </View>
+      ))}
     </ScrollView>
   );
 };
